@@ -23,4 +23,4 @@ A simple weather application that shows real-time weather information using an A
 
 1. Clone repo
 ```bash
-git clone https://github.com/your-username/weather-app.git
+git clone https://github.com/sourav-rana-16/weather-app.git
