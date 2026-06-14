@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>WEATHER APP</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter City Name" required>
+        <button type="submit" class="btn">Search</button>
+    </form>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red; text-align:center; margin-top:10px;">
+                {{ message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+
+    <div class="weather">
+
+        <div class="left">
+            <h2 class="temp">{{ temp }}°C</h2>
+            <h3 class="city">{{ city }}</h3>
+            <p style="text-align:center;">{{ day }}</p>
+        </div>
+
+        <div class="right">
+
+            <div class="icon">
+                <img src="https://openweathermap.org/img/wn/{{ icon }}@2x.png"
+                     alt="Weather Icon">
+            </div>
+
+            <div class="condition">
+                <p>{{ description }}</p>
+                <h3>💧 Humidity: {{ humidity }}%</h3>
+                 <h3>🌬️ Wind Speed: {{ wind }} m/s</h3>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
